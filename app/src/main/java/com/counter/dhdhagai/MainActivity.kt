@@ -1,31 +1,37 @@
 package com.counter.dhdhagai
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.counter.dhdhagai.ui.theme.COunterTheme
+
 
 class MainActivity : ComponentActivity() {
-    lateinit var radio : Button
+    lateinit var button: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        radio = findViewById(R.id.button)
-        radio.setOnClickListener { radioListen }
 
+        val myButton: Button = findViewById(R.id.button)
+
+        myButton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View) {
+                val myIntent = Intent(this@MainActivity, CounterActivity::class.java)
+                myIntent.putExtra("Enabled", true)
+                startActivity(myIntent)
+            }
+        })
+        val radioButton: RadioButton = findViewById(R.id.button2)
+        radioButton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View) {
+                showToast("Enabled 1")
+            }
+        })
     }
-    var radioListen = View.OnClickListener (function = {
-        Toast.makeText(this, "Testing", Toast.LENGTH_SHORT)
-    })
+    private fun showToast(message: String) {
+        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+    }
 }
