@@ -2,5 +2,11 @@
     <string name="app_name">Counter</string>
     <string name="channel_name">Notification Channel</string>
     <string name="channel_desc">Main Notification Channel</string>
+    <string name="start">Start
+    App
+    </string>
+
+
+    <string name="HealthMonitor_Welcome">Welcome to Health Monitior. Please Make Sure to turn on your internet connection and begin here!</string>
 
 </resources>
