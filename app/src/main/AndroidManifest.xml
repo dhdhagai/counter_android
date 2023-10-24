@@ -35,7 +35,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="https" />
-                <data android:host="scipotech2.glitch.me" />
+                <data android:host="scipotech.netlify.app" />
             </intent-filter>
         </activity>
     </application>
