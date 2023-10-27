@@ -1,12 +1,15 @@
 package com.HealthMonitor.dhdhagai
+
 import android.annotation.SuppressLint
-import android.os.Build
 import android.os.Bundle
+import android.webkit.GeolocationPermissions
+import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+
 
 class CounterActivity : AppCompatActivity() {
 
@@ -34,10 +37,22 @@ class CounterActivity : AppCompatActivity() {
                 view?.loadUrl(request?.url.toString())
                 return true
             }
+
         }
 
         // Load the initial URL
         webView.loadUrl("https://scipotech.netlify.app")
+        webView.settings.domStorageEnabled = true
+        webView.settings.setGeolocationEnabled(true)
+        webView.webChromeClient = object : WebChromeClient() {
+            override fun onGeolocationPermissionsShowPrompt(
+                origin: String,
+                callback: GeolocationPermissions.Callback
+            ) {
+                callback.invoke(origin, true, false)
+            }
+        }
+
     }
 
     // Handle back navigation
